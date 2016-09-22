@@ -5,9 +5,7 @@ class User < ApplicationRecord
   attr_accessor :password_confirmation
 
   before_create :encrypt_password
-  before_save :encrypt_password
   after_create :clear_password
-  after_save :clear_password
 
   validates :first, :last, :presence => true
   validates :username,
@@ -28,7 +26,7 @@ class User < ApplicationRecord
   def encrypt_password
     if password.present?
       pass = BCrypt::Password.create(password)
-      self.password = pass.to_s
+      self.password = pass
     end
   end
 

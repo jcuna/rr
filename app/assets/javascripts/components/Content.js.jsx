@@ -3,9 +3,12 @@
  */
 
 class Content extends React.Component {
+    constructor(props) {
+        super(props);
+    }
     render() {
         return (
-            <div></div>
+            <div>{this.props.contentProp}</div>
         );
     }
 }

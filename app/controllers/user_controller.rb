@@ -12,9 +12,9 @@ class UserController < ApplicationController
         password_confirmation: params[:password_confirmation]
     )
     if ! user.errors.empty?
-      render :json => user.errors.full_messages
+      render_json user.errors.full_messages, 500
     else
-      render :json => ['success']
+      render_json 'success'
     end
 
   end

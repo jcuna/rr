@@ -2,16 +2,7 @@
 class HomeController < ApplicationController
 
   def index
-    @is_logged_in = false;
+    @is_logged_in = is_logged_in
   end
-
-
-  def get_people
-
-    @people = Users.all
-
-    render :json => User.all
-  end
-
 
 end

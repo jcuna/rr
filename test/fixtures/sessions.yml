@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  session: MyString
+  cookie: MyString
+  user_id: 1
+  expire: 2016-09-20 20:14:36
+
+two:
+  session: MyString
+  cookie: MyString
+  user_id: 1
+  expire: 2016-09-20 20:14:36
