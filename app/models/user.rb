@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   before_create :encrypt_password
   after_create :clear_password
+  # after_find :clear_password
 
   validates :first, :last, :presence => true
   validates :username,

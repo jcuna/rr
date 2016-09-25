@@ -12,7 +12,7 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <Header headerProp = {this.state.header}/>
+                <Header/>
                 <Content contentProp = {this.state.content}/>
                 <Footer/>
             </div>

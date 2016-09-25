@@ -4,9 +4,9 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
-  get '/login', to: 'login#login'
+  post '/login', to: 'login#login'
   get '/logout', to: 'login#logout'
-
-  get '/user/create', to: 'user#create'
+  post '/user/create', to: 'user#create'
+  get '/user/get-current', to: 'user#current_user'
 
 end

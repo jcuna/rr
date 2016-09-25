@@ -16,7 +16,7 @@ class LoginController < ApplicationController
     end
 
     if invalid_login
-      render_json 'Invalid username or password'
+      render_json 'Invalid username or password', 301
     end
 
   end

@@ -1,9 +1,10 @@
+/**
+ * Created by Jon on 9/21/16.
+ */
 
 class FormGenerator extends React.Component {
     constructor(props) {
         super(props);
-
-        this.handleClick = this.handleClick.bind(this);
 
         this.state = props[Object.keys(props)[0]];
 
@@ -14,8 +15,12 @@ class FormGenerator extends React.Component {
         }
     }
 
+    /**
+     *
+     * @returns {XML}
+     */
     render() {
-        var form = this.generateForm(
+        let form = this.generateForm(
             this.state.elements,
             this.state.formName,
             this.state.buttonValue
@@ -23,18 +28,38 @@ class FormGenerator extends React.Component {
         return (<div>{form}</div>);
     }
 
+    /**
+     * pass refs down to callee
+     */
+    componentDidMount() {
+        if (typeof this.state.object !== "undefined") {
+            this.state.object.refs = this.refs;
+        }
+    }
+
+    /**
+     *
+     * @param elements
+     * @param formName
+     * @param buttonValue
+     * @returns {*}
+     */
     generateForm(elements, formName, buttonValue = "Submit") {
-        let i = -1;
-        return React.createElement('form', {className: formName, onSubmit: this.handleClick},
-            elements.map(function (b) {
-                formElement = b.formElement == undefined ? 'input' : b.formElement;
-                i++;
-                return React.createElement('div', {className: 'form-group', key: i},
+        return React.createElement('form', {className: formName, onSubmit: this.state.callback},
+            elements.map((b, k) => {
+                let formElement = b.formElement == undefined ? 'input' : b.formElement;
+                let reference = b.placeholder.replace(/[^\w]/g, '_').toLowerCase();
+
+
+                return React.createElement('div', {className: 'form-group', key: k},
                     React.createElement(formElement, {
-                        key: i,
                         type: b.type,
                         placeholder: b.placeholder,
-                        className: 'form-control'
+                        className: 'form-control',
+                        onChange: b.onChange,
+                        ref: reference,
+                        value: b.value,
+                        defaultValue: b.defaultValue,
                     })
                 )
             }),
@@ -48,31 +73,5 @@ class FormGenerator extends React.Component {
                 )
             )
         )
-    }
-
-    handleClick(e) {
-        e.preventDefault();
-
-        if (this.state.callback === undefined) {
-            return;
-        }
-
-        console.log(this.state.callback);
-
-        this.state.callback();
-
-        // window['Login']['handleClick'].apply('Login');
-        //
-        // var namespaces = this.state.callback.split(".");
-        // var func = namespaces.pop();
-        //
-        // console.log(User);
-        //
-        // var context = window;
-        // for(var i = 0; i < namespaces.length; i++) {
-        //     console.log(context);
-        //     context = context[namespaces[i]];
-        // }
-        // return context[func].apply(context);
     }
 }
