@@ -8,7 +8,7 @@ class Header extends React.Component {
         super();
         this.state = {
             user: {},
-            renderObject: <div></div>
+            element: <div></div>
         }
     }
 
@@ -16,29 +16,25 @@ class Header extends React.Component {
         $.ajax({
             url: "/user/get-current",
             dataType: 'json',
-            success: (response) => {
+            success: response => {
                 if (response.status == 200) {
+                    let user = response.data;
                     this.setState({
-                        user: response.data,
-                        renderObject: this.header()
+                        element: this.header(user)
                     });
                 } else {
                     //app breaks
-                    console.log('someone went into our database and deleted your session or you\'re doing something funny');
+                    console.error('someone went into our database and deleted your session or you\'re doing something funny');
                 }
             }
         });
     }
 
     render() {
-        return (
-            <header>{this.state.renderObject}</header>
-        );
+        return (this.state.element);
     }
 
-    header() {
-        let user = this.state.user;
-        console.log(user);
+    header(user) {
         return (
             <nav className="navbar navbar-default">
                 <div className="container-fluid">

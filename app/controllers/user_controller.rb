@@ -34,7 +34,9 @@ class UserController < ApplicationController
         else
           reset_session
           render_json 'error', 500
-      end
+        end
+    else
+      render_json nil, 204
     end
   end
 
