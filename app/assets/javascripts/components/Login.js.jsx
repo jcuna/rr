@@ -32,9 +32,13 @@ class Login extends React.Component {
                 <div className="well"><h2>Login</h2></div>
                 {this.state.errors}
                 {this.state.renderObject}
-                <div className="sign-in" onClick={this.signUp} style={{cursor: 'pointer'}}>
-                    <h5 style={{fontWeight: 'bold'}}>Sign Up</h5>
-                </div>
+                <h5 className="sign-in" onClick={this.signUp} style={
+                    {
+                        cursor: 'pointer',
+                        fontWeight: 'bold',
+                        display: 'inline'
+                    }
+                }>Sign Up</h5>
             </div>
         )
     }
