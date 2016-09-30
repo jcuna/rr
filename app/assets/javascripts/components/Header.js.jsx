@@ -24,7 +24,7 @@ class Header extends React.Component {
                     });
                 } else {
                     //app breaks
-                    console.error('someone went into our database and deleted your session or you\'re doing something funny');
+                    location.reload();
                 }
             }
         });
