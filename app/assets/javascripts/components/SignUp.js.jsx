@@ -28,16 +28,17 @@ class SignUp extends React.Component {
     }
 
     render() {
-        return (
-            <div id="modal-window">
-                <div className="modal-content">
-                    <span className="modal-close" onClick={this.props.unMount}> </span>
-                    <div className="well"><h2>Sign Up</h2></div>
-                    {this.state.errors}
-                    {this.state.renderObject}
-                </div>
-            </div>
-        )
+        return(
+            <Modal modal={{
+                onClose: this.props.unMount,
+                content: (
+                    <div>
+                        <div className="well"><h2>Sign Up</h2></div>
+                        {this.state.errors}
+                        {this.state.renderObject}
+                    </div>
+                )
+            }}/>);
     }
 
     getFormProps() {

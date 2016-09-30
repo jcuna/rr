@@ -54,7 +54,7 @@ class FormGenerator extends React.Component {
                     React.createElement(formElement, {
                         type: b.type,
                         placeholder: b.placeholder,
-                        className: 'form-control',
+                        className: 'form-control '+b.className,
                         onChange: b.onChange,
                         ref: reference,
                         value: b.value,

@@ -99,9 +99,9 @@ class Login extends React.Component {
         errors = typeof errors === 'string' ? [errors] : errors;
         return (
             <div className="alert alert-danger alert-dismissible">
-            {errors.map((e, b) => {
-                return (<div key={b}>{e}</div>)
-            })}
+                {errors.map((e, b) => {
+                    return (<div key={b}>{e}</div>)
+                })}
             </div>
         )
     }
