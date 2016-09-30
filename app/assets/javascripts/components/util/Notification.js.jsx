@@ -28,7 +28,7 @@ class Modal extends React.Component {
     }
 
     validateType($type) {
-        let notificationTypes = ['info', 'error', 'success', 'danger'];
+        let notificationTypes = ['info', 'error', 'success', 'danger', 'warning'];
 
         if (!notificationTypes.includes($type)) {
             throw 'Invalid notification type';
