@@ -25,6 +25,7 @@ class UserController < ApplicationController
         if Digest::SHA1.hexdigest("#{user_id}:#{token}") == hash
           user = Session.includes(:user).where(:cookie => token).where(:user_id => user_id)
           if user.first.nil?
+            reset_session
             cookies[:login_cookie] = {value: nil, expires: 1.day.ago}
             render_json 'error', 500
           else

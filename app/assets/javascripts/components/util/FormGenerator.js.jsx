@@ -50,7 +50,6 @@ class FormGenerator extends React.Component {
                 let formElement = b.formElement == undefined ? 'input' : b.formElement;
                 let reference = b.placeholder.replace(/[^\w]/g, '_').toLowerCase();
 
-
                 return React.createElement('div', {className: 'form-group', key: k},
                     React.createElement(formElement, {
                         type: b.type,

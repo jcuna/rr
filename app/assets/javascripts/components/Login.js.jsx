@@ -7,6 +7,8 @@ class Login extends React.Component {
     constructor(props) {
         super(props);
 
+        this.signUp = this.signUp.bind(this);
+        this.unMount = this.unMount.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.onSuccessLogin = this.onSuccessLogin.bind(this);
         this.onFailureLogin = this.onFailureLogin.bind(this);
@@ -32,19 +34,21 @@ class Login extends React.Component {
                 <div className="well"><h2>Login</h2></div>
                 {this.state.errors}
                 {this.state.renderObject}
-                <h5 className="sign-in" onClick={this.signUp} style={
-                    {
-                        cursor: 'pointer',
-                        fontWeight: 'bold',
-                        display: 'inline'
-                    }
-                }>Sign Up</h5>
+                <h5 className="sign-up" onClick={this.signUp} style={{
+                    cursor: 'pointer',
+                    fontWeight: 'bold',
+                    display: 'inline'
+                }}>Sign Up</h5>
             </div>
         )
     }
 
-    signUp(e) {
-        console.log(e);
+    signUp() {
+        ReactDOM.render(<SignUp unMount={this.unMount}/>, document.getElementById('modal-container'));
+    }
+
+    unMount() {
+        ReactDOM.unmountComponentAtNode(document.getElementById('modal-container'));
     }
 
     getFormProps() {
