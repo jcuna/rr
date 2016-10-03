@@ -36,6 +36,13 @@
 
 @media screen and (max-width: 668px) {
     .modal-content {
-        width: 95%;
+        padding: 10px;
+        width: 90%;
+        margin-top: 20px;
     }
+
+    #modal-window {
+        overflow: scroll;
+    }
+
 }

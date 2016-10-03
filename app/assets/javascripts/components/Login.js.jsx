@@ -69,7 +69,10 @@ class Login extends React.Component {
 
         if (this.refs.username.value == '' || this.refs.password.value == '') {
             this.setState({
-                errors: this.formatErrors('Username or password may not be blank'),
+                errors: <Notification notification={{
+                    type: 'error',
+                    messages: ['Username name and password cannot be blank']
+                }}/>,
                 renderObject: this.getForm()
             })
         } else {
@@ -90,19 +93,11 @@ class Login extends React.Component {
 
     onFailureLogin(errors) {
         this.setState({
-            errors: this.formatErrors(errors),
+            errors: <Notification notification={{
+                type: 'error',
+                messages: errors
+            }} key='bad-login'/>,
             renderObject: this.getForm()
         });
-    }
-
-    formatErrors(errors) {
-        errors = typeof errors === 'string' ? [errors] : errors;
-        return (
-            <div className="alert alert-danger alert-dismissible">
-                {errors.map((e, b) => {
-                    return (<div key={b}>{e}</div>)
-                })}
-            </div>
-        )
     }
 }

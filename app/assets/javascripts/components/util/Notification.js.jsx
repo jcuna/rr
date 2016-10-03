@@ -2,14 +2,15 @@
  * Created by Jon on 9/30/16.
  */
 
-class Modal extends React.Component {
+class Notification extends React.Component {
     constructor(props) {
         super(props);
 
-        this.validateType(this.props.modal.type);
-        let type = this.props.modal.type === 'error' ? 'danger' : this.props.modal.type;
+        this.validateType(this.props.notification.type);
+        let type = this.props.notification.type === 'error' ? 'danger' : this.props.notification.type;
 
-        let messages = typeof this.props.modal.messages === 'string' ? [this.props.modal.messages] : this.props.modal.messages;
+        let messages = typeof this.props.notification.messages === 'string' ?
+            [this.props.notification.messages] : this.props.notification.messages;
 
         this.state = {
             type: type,
@@ -19,8 +20,8 @@ class Modal extends React.Component {
 
     render() {
         return (
-            <div className="alert alert-"{this.state.type}" alert-dismissible">
-                {this.state.messagtes.map((e, b) => {
+            <div className={"alert alert-"+this.state.type+" alert-dismissible"}>
+                {this.state.content.map((e, b) => {
                     return (<div key={b}>{e}</div>)
                 })}
             </div>
