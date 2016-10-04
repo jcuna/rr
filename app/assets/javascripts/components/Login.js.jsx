@@ -69,10 +69,10 @@ class Login extends React.Component {
         let key = Date.now() / 1000 | 0;
         if (this.refs.username.value == '' || this.refs.password.value == '') {
             this.setState({
-                errors: <Notification notification={{
-                    type: 'error',
-                    messages: ['Username name and password cannot be blank']
-                }} key={key}/>,
+                errors: <Notification
+                    type="error"
+                    messages="Username name and password cannot be blank"
+                    key={key}/>,
                 renderObject: this.getForm()
             })
         } else {

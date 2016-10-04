@@ -6,11 +6,11 @@ class Notification extends React.Component {
     constructor(props) {
         super(props);
 
-        this.validateType(this.props.notification.type);
-        let type = this.props.notification.type === 'error' ? 'danger' : this.props.notification.type;
+        this.validateType(this.props.type);
+        let type = this.props.type === 'error' ? 'danger' : this.props.type;
 
-        let messages = typeof this.props.notification.messages === 'string' ?
-            [this.props.notification.messages] : this.props.notification.messages;
+        let messages = typeof this.props.messages === 'string' ?
+            [this.props.messages] : this.props.messages;
 
         this.state = {
             type: type,

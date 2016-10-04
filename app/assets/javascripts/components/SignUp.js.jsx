@@ -13,7 +13,7 @@ class SignUp extends React.Component {
         this.onFailureLogin = this.onFailureLogin.bind(this);
 
         this.state = {
-            errors: <div></div>,
+            notification: <div></div>,
             renderObject: this.getForm()
         };
     }
@@ -33,7 +33,7 @@ class SignUp extends React.Component {
                 content:
                     <div>
                         <div className="well"><h2>Sign Up</h2></div>
-                        {this.state.errors}
+                        {this.state.notification}
                         {this.state.renderObject}
                     </div>
             }}/>
@@ -77,10 +77,7 @@ class SignUp extends React.Component {
     onFailureLogin(errors) {
         let key = Date.now() / 1000 | 0;
         this.setState({
-            errors: <Notification notification={{
-                type: 'error',
-                messages: errors
-            }} key={key}/>,
+            notification: <Notification type="error" messages={errors} key={key}/>,
             renderObject: this.getForm()
         });
     }
@@ -95,7 +92,7 @@ class SignUp extends React.Component {
             password_confirmation: this.refs.confirm_password.value,
 
         };
-        return $.ajax({
+        $.ajax({
             url: "/user/create",
             method: 'POST',
             data: userData,
