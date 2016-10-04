@@ -14,7 +14,7 @@ class Login extends React.Component {
         this.onFailureLogin = this.onFailureLogin.bind(this);
 
         this.state = {
-            errors: [],
+            errors: <div></div>,
             renderObject: this.getForm()
         };
 
@@ -30,7 +30,7 @@ class Login extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="container">
                 <div className="well"><h2>Login</h2></div>
                 {this.state.errors}
                 {this.state.renderObject}
@@ -66,13 +66,13 @@ class Login extends React.Component {
 
     handleClick(e) {
         e.preventDefault();
-
+        let key = Date.now() / 1000 | 0;
         if (this.refs.username.value == '' || this.refs.password.value == '') {
             this.setState({
                 errors: <Notification notification={{
                     type: 'error',
                     messages: ['Username name and password cannot be blank']
-                }}/>,
+                }} key={key}/>,
                 renderObject: this.getForm()
             })
         } else {
@@ -92,11 +92,12 @@ class Login extends React.Component {
     }
 
     onFailureLogin(errors) {
+        let key = Date.now() / 1000 | 0;
         this.setState({
             errors: <Notification notification={{
                 type: 'error',
                 messages: errors
-            }} key='bad-login'/>,
+            }} key={key}/>,
             renderObject: this.getForm()
         });
     }

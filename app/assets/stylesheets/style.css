@@ -1,3 +1,26 @@
+.full-body,
+html,
+body {
+    height: 100%;
+    /* The html and body elements cannot have any padding or margin. */
+}
+.navbar-default .navbar-brand {
+    font-family: 'Dancing Script', cursive;
+    font-size: 38px;
+}
+.navbar-default:hover .navbar-brand:hover {
+    color: #ccc;
+}
+
+#content {
+    min-height: 100%;
+    height: auto;
+    /* Negative indent footer by its height */
+    margin: 0 auto -200px;
+    /* Pad bottom by footer height */
+    padding: 0 0 200px;
+}
+
 /* The Modal (background) */
 #modal-window {
     /*display: none; !* Hidden by default *!*/
@@ -45,4 +68,16 @@
         overflow: scroll;
     }
 
+}
+
+#footer {
+    margin-top: 10px;
+    height: 200px;
+}
+.panel-footer {
+    height:100%;
+}
+
+.panel-footer .container p {
+    text-align: right;
 }

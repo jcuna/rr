@@ -13,16 +13,15 @@ class SignUp extends React.Component {
         this.onFailureLogin = this.onFailureLogin.bind(this);
 
         this.state = {
-            errors: [],
+            errors: <div></div>,
             renderObject: this.getForm()
         };
-
     }
 
     getForm() {
         return (
          <div>
-            <FormGenerator props = {this.getFormProps()}/>
+            <FormGenerator props={this.getFormProps()}/>
         </div>
         )
     }
@@ -31,14 +30,14 @@ class SignUp extends React.Component {
         return(
             <Modal modal={{
                 onClose: this.props.unMount,
-                content: (
+                content:
                     <div>
                         <div className="well"><h2>Sign Up</h2></div>
                         {this.state.errors}
                         {this.state.renderObject}
                     </div>
-                )
-            }}/>);
+            }}/>
+        );
     }
 
     getFormProps() {
@@ -76,21 +75,14 @@ class SignUp extends React.Component {
     }
 
     onFailureLogin(errors) {
+        let key = Date.now() / 1000 | 0;
         this.setState({
-            errors: this.formatErrors(errors),
+            errors: <Notification notification={{
+                type: 'error',
+                messages: errors
+            }} key={key}/>,
             renderObject: this.getForm()
         });
-    }
-
-    formatErrors(errors) {
-        errors = typeof errors === 'string' ? [errors] : errors;
-        return (
-            <div className="alert alert-danger alert-dismissible">
-            {errors.map((e, b) => {
-                return (<div key={b}>{e}</div>)
-            })}
-            </div>
-        )
     }
 
     createUser() {
@@ -112,7 +104,7 @@ class SignUp extends React.Component {
             if (response.status == 200) {
                 this.props.unMount()
             } else {
-                console.error(response);
+                this.onFailureLogin(response.data);
             }
         });
     }

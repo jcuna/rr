@@ -13,6 +13,7 @@ class Modal extends React.Component {
     }
 
     render() {
+        console.log(this.state.content);
         return (
             <div id="modal-window">
                 <div className="modal-content">

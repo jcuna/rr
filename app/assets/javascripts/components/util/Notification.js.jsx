@@ -20,7 +20,7 @@ class Notification extends React.Component {
 
     render() {
         return (
-            <div className={"alert alert-"+this.state.type+" alert-dismissible"}>
+            <div className={"alert alert-"+this.state.type}>
                 {this.state.content.map((e, b) => {
                     return (<div key={b}>{e}</div>)
                 })}

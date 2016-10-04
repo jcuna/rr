@@ -8,7 +8,9 @@ class Content extends React.Component {
     }
     render() {
         return (
-            <div>{this.props.contentProp}</div>
+            <div className="container">
+                {this.props.contentProp}
+            </div>
         );
     }
 }

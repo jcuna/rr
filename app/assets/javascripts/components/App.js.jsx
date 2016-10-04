@@ -11,9 +11,11 @@ class App extends React.Component {
 
     render() {
         return (
-            <div>
-                <Header/>
-                <Content contentProp = {this.state.content}/>
+            <div className="full-body">
+                <div id="content">
+                    <Header/>
+                    <Content contentProp = {this.state.content}/>
+                </div>
                 <Footer/>
             </div>
         );
