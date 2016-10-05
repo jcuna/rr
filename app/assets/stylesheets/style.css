@@ -23,7 +23,6 @@ body {
 
 /* The Modal (background) */
 #modal-window {
-    /*display: none; !* Hidden by default *!*/
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
@@ -33,9 +32,11 @@ body {
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
 }
-
+#modal-window .modal-body {
+    overflow-y: auto;
+}
 /* Modal Content/Box */
-.modal-content {
+#modal-window .modal-content {
     background-color: #fefefe;
     padding: 20px;
     border: 1px solid #888;
@@ -44,16 +45,17 @@ body {
     left: 50%;
     top: 50%;
     width: 75%;
+    max-height: 90%;
+    overflow-y: auto;
 }
 
-.modal-close {
+#modal-window .modal-close {
     position: absolute;
     top: -18px;
     right: -18px;
     width: 36px;
     height: 36px;
     cursor: pointer;
-    z-index: 8040;
     background-image: url(modal-close.png);
 }
 
@@ -63,11 +65,6 @@ body {
         width: 90%;
         margin-top: 20px;
     }
-
-    #modal-window {
-        overflow: scroll;
-    }
-
 }
 
 #footer {

@@ -28,15 +28,11 @@ class SignUp extends React.Component {
 
     render() {
         return(
-            <Modal modal={{
-                onClose: this.props.unMount,
-                content:
-                    <div>
-                        <div className="well"><h2>Sign Up</h2></div>
-                        {this.state.notification}
-                        {this.state.renderObject}
-                    </div>
-            }}/>
+            <div>
+                <div className="well"><h2>Sign Up</h2></div>
+                {this.state.notification}
+                {this.state.renderObject}
+            </div>
         );
     }
 
@@ -59,15 +55,7 @@ class SignUp extends React.Component {
 
     handleClick(e) {
         e.preventDefault();
-
-        // if (this.refs.username.value == '' || this.refs.password.value == '') {
-        //     this.setState({
-        //         errors: this.formatErrors('Username or password may not be blank'),
-        //         renderObject: this.getForm()
-        //     })
-        // } else {
-            this.createUser();
-        // }
+        this.createUser();
     };
 
     onSuccessLogin() {

@@ -7,8 +7,6 @@ class Login extends React.Component {
     constructor(props) {
         super(props);
 
-        this.signUp = this.signUp.bind(this);
-        this.unMount = this.unMount.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.onSuccessLogin = this.onSuccessLogin.bind(this);
         this.onFailureLogin = this.onFailureLogin.bind(this);
@@ -41,14 +39,6 @@ class Login extends React.Component {
                 }}>Sign Up</h5>
             </div>
         )
-    }
-
-    signUp() {
-        ReactDOM.render(<SignUp unMount={this.unMount}/>, document.getElementById('modal-container'));
-    }
-
-    unMount() {
-        ReactDOM.unmountComponentAtNode(document.getElementById('modal-container'));
     }
 
     getFormProps() {
@@ -102,3 +92,7 @@ class Login extends React.Component {
         });
     }
 }
+
+Login.prototype.signUp = function () {
+    Modal.new(<SignUp/>);
+};
