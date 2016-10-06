@@ -29,7 +29,6 @@ class SignUp extends React.Component {
     render() {
         return(
             <div>
-                <div className="well"><h2>Sign Up</h2></div>
                 {this.state.notification}
                 {this.state.renderObject}
             </div>

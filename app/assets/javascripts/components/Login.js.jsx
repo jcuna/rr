@@ -94,5 +94,5 @@ class Login extends React.Component {
 }
 
 Login.prototype.signUp = function () {
-    Modal.new(<SignUp/>);
+    Modal.new(<SignUp/>, 'Sign Up');
 };

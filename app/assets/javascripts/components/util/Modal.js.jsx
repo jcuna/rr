@@ -9,18 +9,45 @@ class Modal extends React.Component {
         this.closeModal = this.closeModal.bind(this);
 
         this.state = {
-            content: this.props.child
+            content: this.props.content,
+            title: this.props.title,
+            footer: this.props.footer
         }
     }
 
+    componentDidMount() {
+        let domElement = ReactDOM.findDOMNode(this);
+        domElement.onkeydown = (e) => {
+            //keyCode 27 is the escape key
+            if (e.keyCode === 27) {
+                this.closeModal(e);
+            }
+        };
+        domElement.focus();
+    }
+
+    componentWillUnmount() {
+        let domElement = ReactDOM.findDOMNode(this);
+        domElement.blur();
+    }
+
     render() {
+
+        let footer = '';
+        if (this.state.footer !== undefined) {
+            footer = <div className="modal-footer">{this.state.footer}</div>;
+        }
         return (
-            <div id="modal-window" onClick={this.closeModal}>
+            <div id="modal-window" tabIndex="0" onClick={this.closeModal}>
                 <div className="modal-content" onClick={this.stopPropagation}>
-                    <span className="modal-close" onClick={this.closeModal}> </span>
+                    <div className="modal-header">
+                        <button className="close" onClick={this.closeModal}> </button>
+                        <h2 className="modal-title">{this.state.title}</h2>
+                    </div>
                     <div className="modal-body">
                         {this.state.content}
                     </div>
+                    {footer}
                 </div>
             </div>
         )
@@ -41,10 +68,10 @@ Modal.prototype.unMount = function () {
     ReactDOM.unmountComponentAtNode(document.getElementById('modal-container'));
 };
 
+Modal.new = function (content, title, footer) {
 
-Modal.new = function (child) {
     ReactDOM.render(
-        <Modal child={child}/>,
+        <Modal content={content} title={title} footer={footer}/>,
         document.getElementById('modal-container')
     );
 };
