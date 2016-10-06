@@ -8,7 +8,7 @@ class User < ApplicationRecord
   after_create :clear_password
   # after_find :clear_password
 
-  validates :first, :last, :presence => true
+  validates :first, :last, :presence => {message: "%{value} name cannot be blank"}
   validates :username,
             :format => {with: /\A[a-zA-Z0-9]+\Z/},
             :uniqueness => true,
