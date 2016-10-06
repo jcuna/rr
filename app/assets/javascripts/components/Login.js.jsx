@@ -10,9 +10,11 @@ class Login extends React.Component {
         this.handleClick = this.handleClick.bind(this);
         this.onSuccessLogin = this.onSuccessLogin.bind(this);
         this.onFailureLogin = this.onFailureLogin.bind(this);
+        this.accountCreated = this.accountCreated.bind(this);
+        this.signUp = this.signUp.bind(this);
 
         this.state = {
-            errors: <div></div>,
+            messages: <div></div>,
             renderObject: this.getForm()
         };
 
@@ -30,7 +32,7 @@ class Login extends React.Component {
         return (
             <div className="container">
                 <div className="well"><h2>Login</h2></div>
-                {this.state.errors}
+                {this.state.messages}
                 {this.state.renderObject}
                 <h5 className="sign-up" onClick={this.signUp} style={{
                     cursor: 'pointer',
@@ -59,7 +61,7 @@ class Login extends React.Component {
         let key = Date.now() / 1000 | 0;
         if (this.refs.username.value == '' || this.refs.password.value == '') {
             this.setState({
-                errors: <Notification
+                messages: <Notification
                     type="error"
                     messages="Username name and password cannot be blank"
                     key={key}/>,
@@ -78,21 +80,33 @@ class Login extends React.Component {
     };
 
     onSuccessLogin() {
-        this.props.updateState(<App/>);
+        this.props.success();
     }
 
-    onFailureLogin(errors) {
+    accountCreated() {
+        this.modal.closeModal();
         let key = Date.now() / 1000 | 0;
         this.setState({
-            errors: <Notification notification={{
-                type: 'error',
-                messages: errors
-            }} key={key}/>,
+            messages: <Notification
+                type="success"
+                messages='Account created successfully'
+                key={key}/>,
+            renderObject: this.getForm()
+        });
+    }
+
+    onFailureLogin(messages) {
+        let key = Date.now() / 1000 | 0;
+        this.setState({
+            messages: <Notification
+                type="error"
+                messages={messages}
+                key={key}/>,
             renderObject: this.getForm()
         });
     }
 }
 
 Login.prototype.signUp = function () {
-    Modal.new(<SignUp/>, 'Sign Up');
+    this.modal = Modal.new(<SignUp accountCreated={this.accountCreated}/>, 'Sign Up');
 };

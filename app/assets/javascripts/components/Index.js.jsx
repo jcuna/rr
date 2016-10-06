@@ -6,7 +6,7 @@ class Index extends React.Component {
     constructor(props) {
         super(props);
 
-        this.updateComponent = this.updateComponent.bind(this);
+        this.reRender = this.reRender.bind(this);
 
         if (props.loggedIn) {
             this.state = {
@@ -14,14 +14,14 @@ class Index extends React.Component {
             }
         } else {
             this.state = {
-                component: <Login updateState={this.updateComponent}/>
+                component: <Login success={this.reRender}/>
             }
         }
     }
 
-    updateComponent(newComponent) {
+    reRender() {
         this.setState({
-            component: newComponent
+            component: <App/>
         })
     }
 

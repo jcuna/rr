@@ -60,7 +60,9 @@ Modal.prototype.stopPropagation = function (e) {
 
 
 Modal.prototype.closeModal = function (e) {
-    e.stopPropagation();
+    if (e !== undefined) {
+        e.stopPropagation();
+    }
     this.unMount();
 };
 
@@ -69,8 +71,7 @@ Modal.prototype.unMount = function () {
 };
 
 Modal.new = function (content, title, footer) {
-
-    ReactDOM.render(
+    return ReactDOM.render(
         <Modal content={content} title={title} footer={footer}/>,
         document.getElementById('modal-container')
     );

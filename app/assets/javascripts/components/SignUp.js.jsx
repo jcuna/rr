@@ -86,7 +86,7 @@ class SignUp extends React.Component {
             dataType: 'json',
         }).then(response => {
             if (response.status == 200) {
-                this.props.unMount()
+                this.props.accountCreated()
             } else {
                 this.onFailureLogin(response.data);
             }
