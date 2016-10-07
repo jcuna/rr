@@ -66,9 +66,13 @@ a {
 
 @media screen and (max-width: 668px) {
     #modal-window .modal-content {
-        padding: 10px;
-        width: 90%;
-        margin-top: 20px;
+        padding: 5px;
+        width: 95%;
+        margin-top: 5px;
+    }
+
+    .modal-content .modal-header {
+        padding: 5px;
     }
 
 }
