@@ -5,9 +5,7 @@
 class LogoutContainer extends React.Component {
 
     componentWillMount() {
-        api('logout', 'delete').then(function(response) {
-            window.location('/');
-        });
+        api('logout', 'delete');
     }
 
     render() {
