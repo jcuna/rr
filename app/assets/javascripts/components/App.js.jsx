@@ -4,7 +4,6 @@ class App extends React.Component {
         super(props);
 
         this.state = {
-            header: "Header from props...",
             content: "Content from props..."
         }
     }
@@ -13,7 +12,7 @@ class App extends React.Component {
         return (
             <div className="full-body">
                 <div id="content">
-                    <Header/>
+                    <CurrentUserContainer/>
                     <Content contentProp = {this.state.content}/>
                 </div>
                 <Footer/>

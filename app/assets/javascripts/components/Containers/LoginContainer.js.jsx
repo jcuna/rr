@@ -12,22 +12,15 @@ class LoginContainer extends React.Component {
             username: this.props.login.username,
             password: this.props.login.password
         };
-        return $.ajax({
-            url: "/login",
-            method: 'POST',
-            data: loginData,
-            dataType: 'json',
-        }).then(response => {
-            if (response.status == 200) {
-                this.props.login.onSuccess()
-            } else {
-                this.props.login.onFailure(response.data)
-            }
+
+        api('login', 'post', loginData).then(response => {
+            this.props.login.onSuccess(response)
+        }, error => {
+            this.props.login.onFailure(error.data)
         });
     }
 
     render() {
-        return <div></div>
+        return (<div></div>);
     }
-
 }

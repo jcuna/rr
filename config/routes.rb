@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   post '/login', to: 'login#login'
-  get '/logout', to: 'login#logout'
+  delete '/logout', to: 'login#logout'
   post '/user/create', to: 'user#create'
   get '/user/get-current', to: 'user#current_user'
 

@@ -79,17 +79,10 @@ class SignUp extends React.Component {
             password_confirmation: this.refs.confirm_password.value,
 
         };
-        $.ajax({
-            url: "/user/create",
-            method: 'POST',
-            data: userData,
-            dataType: 'json',
-        }).then(response => {
-            if (response.status == 200) {
-                this.props.accountCreated()
-            } else {
-                this.onFailureLogin(response.data);
-            }
+        api('user/create', 'post', userData).then(response => {
+            this.props.accountCreated(response);
+        }, error => {
+            this.onFailureLogin(error.data);
         });
     }
 }

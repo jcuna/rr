@@ -4,6 +4,10 @@ body {
     height: 100%;
     /* The html and body elements cannot have any padding or margin. */
 }
+
+a {
+    cursor: pointer;
+}
 .navbar-default .navbar-brand {
     font-family: 'Dancing Script', cursive;
     font-size: 38px;

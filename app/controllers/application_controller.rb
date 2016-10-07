@@ -3,12 +3,16 @@ class ApplicationController < ActionController::Base
 
   before_filter :login_with_cookie
 
-  def render_json(data, status = 200)
-    render :json => {data: data, status: status}
+  def render_json(data, status = 200, redirect = nil)
+    response = {data: data, status: status}
+    unless redirect.nil?
+      response[:redirect] = redirect
+    end
+    render :json => response
   end
 
   def is_logged_in
-    session[:is_logged_in].present?
+    cookies[:login_cookie].present?
   end
 
   def get_session_id
@@ -16,7 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   def create_session
-    unless session[:is_logged_in].present?
+    unless cookies[:login_cookie].present?
       session[:is_logged_in] = true
 
       @token = SecureRandom.urlsafe_base64 64

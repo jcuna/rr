@@ -31,7 +31,7 @@ class LoginController < ApplicationController
       reset_session
       cookies[:login_cookie] = {value: nil, expires: 1.day.ago}
     end
-    render_json 'success'
+    render_json 'success', 200, '/'
 
   end
 
