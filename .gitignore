@@ -24,3 +24,7 @@
 ._DS*
 public/assets/*
 Gemfile.lock
+
+/node_modules
+/vendor/assets/stylesheets/brunch
+/vendor/assets/javascripts/brunch

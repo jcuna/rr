@@ -12,9 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require react
-//= require react_ujs
-//= require react_router
 //= require turbolinks
 //= require components
+//= require brunch/app
 //= require_tree .

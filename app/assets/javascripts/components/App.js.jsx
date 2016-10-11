@@ -9,17 +9,20 @@ class App extends React.Component {
     render() {
         return (
             <div className="full-body">
-                <div id="content">
-                    <CurrentUserContainer/>
+                <div className="full-body">
+                    <div id="content">
+                        <CurrentUserContainer/>
 
-                    {/*<CurrentUserContainer/>*/}
-                    {/*<Router history={BrowserHistory}>*/}
-                        {/*<Route path="/" component={Content}>*/}
-                            {/*<Route path="login" component={Login}/>*/}
-                        {/*</Route>*/}
-                    {/*</Router>*/}
+                        {/*<CurrentUserContainer/>*/}
+                        {/*<Router history={BrowserHistory}>*/}
+                            {/*<Route path="/" component={Content}>*/}
+                                {/*<Route path="login" component={Login}/>*/}
+                            {/*</Route>*/}
+                        {/*</Router>*/}
+                    </div>
+                    <Footer/>
                 </div>
-                <Footer/>
+                <div id="modal-container"></div>
             </div>
         );
     }

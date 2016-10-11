@@ -2,30 +2,21 @@
  * Created by Jon on 9/21/16.
  */
 
-class Index extends React.Component {
-    constructor(props) {
-        super(props);
+Router = ReactRouter;
 
-        this.reRender = this.reRender.bind(this);
+document.addEventListener("DOMContentLoaded", function() {
+    // ReactDOM.render(
+    //     <Router routes={Routes} />,
+    //     document.getElementById('app')
+    // );
 
-        if (props.loggedIn) {
-            this.state = {
-                component: <App/>
-            }
-        } else {
-            this.state = {
-                component: <Login success={this.reRender}/>
-            }
-        }
-    }
+    Router.run(Routes, function (Handler) {
+        console.log(Routes);
 
-    reRender() {
-        this.setState({
-            component: <App/>
-        })
-    }
+        ReactDOM.render(<Handler/>,
+            document.getElementById('app')
+        );
+    });
+});
 
-    render() {
-        return this.state.component;
-    }
-}
+
