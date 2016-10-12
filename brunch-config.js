@@ -1,7 +1,7 @@
 // See http://brunch.io for documentation.
 module.exports = {
   paths: {
-    watched: ['app/brunch'],
+    watched: ['app/assets'],
     public: 'vendor/assets'
   },
 
@@ -9,8 +9,19 @@ module.exports = {
     wrapper: false
   },
 
+    plugins: {
+        babel: {
+            presets: ['es2015', 'es2016', 'react'], // es2015, es2016 are defaults
+            ignore: [
+                /^(bower_components|vendor)/,
+                'app/legacyES5Code/**/*'
+            ],
+            pattern: /\.(es6|jsx)$/ // js and jsx are defaults.
+        }
+    },
+
   files: {
-    javascripts: {joinTo: 'javascripts/brunch/app.js'},
-    stylesheets: {joinTo: 'stylesheets/brunch/app.css'}
+    javascripts: {joinTo: 'app/assets/javascripts/application.js'},
+    stylesheets: {joinTo: 'app/assets/stylesheets/application.css'}
   }
-}
+};

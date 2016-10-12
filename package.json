@@ -1,17 +1,22 @@
 {
-  "name": "rails-app",
-  "description": "Testing react",
-  "author": "Jon",
+  "name": "brunch-app",
+  "description": "Description",
+  "author": "Your Name",
   "version": "0.1.0",
   "scripts": {
     "start": "brunch watch",
-    "build": "brunch build --production"
+    "build": "brunch build"
   },
-  "dependencies": {},
+  "dependencies": {
+    "babel-brunch": "^6.0.6",
+    "react": "^15.3.2",
+    "react-router": "^2.8.1"
+  },
   "devDependencies": {
+    "auto-reload-brunch": "^2.0.0",
+    "babel-preset-react": "^6.16.0",
     "brunch": "^2.5.1",
-    "javascript-brunch": "^2.0.0",
     "css-brunch": "^2.0.0",
-    "auto-reload-brunch": "^2.0.0"
+    "javascript-brunch": "^2.0.0"
   }
 }

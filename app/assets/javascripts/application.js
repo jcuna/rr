@@ -14,5 +14,4 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require components
-//= require brunch/app
 //= require_tree .

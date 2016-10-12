@@ -9,7 +9,7 @@
  * @param data
  * @returns {Promise}
  */
-var api = function(url, method, data) {
+const api = function(url, method, data) {
     'use strict';
 
     method = method === undefined ? 'POST' : method;
