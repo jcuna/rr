@@ -12,7 +12,7 @@ module.exports = {
     plugins: {
         babel: {
             presets: ['es2015', 'es2016', 'react'], // es2015, es2016 are defaults
-            pattern: /\.(es6|jsx)$/ // js and jsx are defaults.
+            // pattern: /\.(es6|jsx)$/ // js and jsx are defaults.
         }
     },
 
