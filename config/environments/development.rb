@@ -70,14 +70,14 @@ Rails.application.configure do
   config.npm.watch = ['npm run start']
 
   # The commands are arrays; you may add more commands as needed:
-  config.npm.watch = [
-      # 'npm run webpack:start',
-      'npm run brunch:start'
-  ]
+  # config.npm.watch = [
+  #     # 'npm run webpack:start',
+  #     'npm run brunch:start'
+  # ]
 
   # If 'true', runs 'npm install' on 'rake assets:precompile'. (v1.6.0+)
   # This is generally desired, but you may set this to false when
   # deploying to Heroku to speed things up.
-  config.npm.install_on_asset_precompile = true
+  config.npm.install_on_asset_precompile = false
 
 end

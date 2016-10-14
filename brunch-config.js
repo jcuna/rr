@@ -1,23 +1,35 @@
-// See http://brunch.io for documentation.
 module.exports = {
-  paths: {
-    watched: ['app/assets'],
-    public: 'vendor/assets'
-  },
 
-  modules: {
-    wrapper: false
-  },
-
-    plugins: {
-        babel: {
-            presets: ['es2015', 'es2016', 'react'], // es2015, es2016 are defaults
-            // pattern: /\.(es6|jsx)$/ // js and jsx are defaults.
-        }
+    paths: {
+        watched: ['app/assets/javascripts', 'app/assets/stylesheets', 'test', 'vendor'],
+        public: 'public/assets'
     },
 
-  files: {
-    javascripts: {joinTo: 'app/assets/javascripts/application.js'},
-    stylesheets: {joinTo: 'app/assets/stylesheets/application.css'}
-  }
+    files: {
+        javascripts: {
+            joinTo: 'javascripts/app.js'
+            // joinTo: {
+            //     'javascripts/app.js': /app\/assets\/javascripts/,
+            //     'javascripts/vendor.js': /^vendor/
+            // }
+        },
+        stylesheets: {joinTo: 'stylesheets/app.css'}
+    },
+
+    plugins: {
+        babel: {presets: ['es2015', 'es2016', 'react']},
+        postcss: {processors: [require('autoprefixer')]}
+    },
+
+    conventions: {
+        assets: /^app\/assets\/images\//
+    }
 };
+
+
+
+
+
+
+
+
