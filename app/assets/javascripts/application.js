@@ -14,3 +14,6 @@
 //= require jquery_ujs
 //= require components
 //= require_tree .
+
+React = window.React = require('react');
+ReactDom = window.ReactDom = require('react-dom');

@@ -14,5 +14,8 @@ module Testapp
     config.generators do |g|
       g.assets false
     end
+
+    #config.browserify_rails.commandline_options = "-t [ babelify --presets [ es2015 react stage-0 ] --plugins [ syntax-async-functions transform-regenerator ] ]"
+
   end
 end
