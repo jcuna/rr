@@ -13,8 +13,4 @@
 //= require jquery
 //= require jquery_ujs
 //= require components
-//= require app
 //= require_tree .
-
-const React = window.React = require('react');
-const ReactDom = window.ReactDom = require('react-dom');

@@ -1,7 +1,7 @@
 module.exports = {
 
     paths: {
-        watched: ['app/assets/javascripts', 'app/assets/stylesheets', 'test', 'vendor'],
+        watched: ['app/assets/javascripts', 'app/assets/stylesheets'],
         public: 'public/assets'
     },
 
@@ -9,11 +9,15 @@ module.exports = {
         javascripts: {
             joinTo: 'javascripts/app.js'
             // joinTo: {
-            //     'javascripts/app.js': /app\/assets\/javascripts/,
+            //     'javascripts/app.js': /^app/,
             //     'javascripts/vendor.js': /^vendor/
             // }
         },
         stylesheets: {joinTo: 'stylesheets/app.css'}
+    },
+
+    modules: {
+        wrapper: false
     },
 
     plugins: {
@@ -25,11 +29,3 @@ module.exports = {
         assets: /^app\/assets\/images\//
     }
 };
-
-
-
-
-
-
-
-

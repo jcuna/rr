@@ -2,21 +2,27 @@
  * Created by Jon on 9/21/16.
  */
 
-Router = ReactRouter;
+
+const React = window.React = require('react');
+const ReactDOM = window.ReactDOM = require('react-dom');
+
+// const Router = ReactRouter;
 
 document.addEventListener("DOMContentLoaded", function() {
     // ReactDOM.render(
     //     <Router routes={Routes} />,
-    //     document.getElementById('app')
+    //     document.querySelector('#app')
     // );
 
-    Router.run(Routes, function (Handler) {
-        console.log(Routes);
-
-        ReactDOM.render(<Handler/>,
-            document.getElementById('app')
-        );
-    });
+    alert('loaded');
+    //
+    // Router.run(Routes, function (Handler) {
+    //     console.log(Routes);
+    //
+    //     ReactDOM.render(<Handler/>,
+    //         document.querySelector('#app')
+    //     );
+    // });
 });
 
 

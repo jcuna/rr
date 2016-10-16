@@ -1,6 +1,6 @@
 
 // const Router = ReactRouter;
-const Route = ReactRouter.Route;
+// const Route = ReactRouter.Route;
 // const BrowserHistory = ReactRouter;
 // const IndexRoute = ReactRouter.IndexRoute;
 
@@ -11,8 +11,7 @@ class App extends React.Component {
             <div className="full-body">
                 <div className="full-body">
                     <div id="content">
-                        <CurrentUserContainer/>
-
+                        {/*<CurrentUserContainer/>*/}
                         {/*<CurrentUserContainer/>*/}
                         {/*<Router history={BrowserHistory}>*/}
                             {/*<Route path="/" component={Content}>*/}

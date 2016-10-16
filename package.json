@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "scripts": {
     "start": "brunch watch",
-    "build": "brunch build --production"
+    "build": "brunch build"
   },
 
   "dependencies": {
