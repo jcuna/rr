@@ -17,7 +17,8 @@ module Testapp
 
     # config/application.rb
     # Configure Browserify to use babelify to compile ES6
-    config.browserify_rails.commandline_options = "-t [ babelify --presets [ es2015 react ] ]"
+    # config.browserify_rails.commandline_options = "-t [ babelify --presets [ es2015 react ] ]"
+    # config.browserify_rails.commandline_options = "-t [reactify --extension jsx]"
 
     unless Rails.env.production?
       # Work around sprockets+teaspoon mismatch:

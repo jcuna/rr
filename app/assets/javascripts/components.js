@@ -1,1 +1,1 @@
-require('components/App');
+require('components/Index.js.jsx');

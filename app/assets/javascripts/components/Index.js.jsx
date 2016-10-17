@@ -5,12 +5,11 @@
 // const Router = ReactRouter;
 
 document.addEventListener("DOMContentLoaded", function() {
-    // ReactDOM.render(
-    //     <Router routes={Routes} />,
-    //     document.querySelector('#app')
-    // );
+    ReactDOM.render(
+        <Router routes={Routes} />,
+        document.querySelector('#app')
+    );
 
-    alert('loaded');
     //
     // Router.run(Routes, function (Handler) {
     //     console.log(Routes);

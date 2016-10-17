@@ -22,7 +22,7 @@ module.exports = {
 
     plugins: {
         babel: {presets: ['es2015', 'es2016', 'react']},
-        postcss: {processors: [require('autoprefixer')]}
+        postcss: {processors: [require('autoprefixer')]},
     },
 
     conventions: {

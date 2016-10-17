@@ -37,3 +37,5 @@ const api = function(url, method, data) {
         });
     });
 };
+
+module.exports = api;
