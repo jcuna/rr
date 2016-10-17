@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  before_filter :login_with_cookie
+  before_action :login_with_cookie
 
   def render_json(data, status = 200, redirect = nil)
     response = {data: data, status: status}
