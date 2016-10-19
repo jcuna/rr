@@ -2,7 +2,9 @@
  * Created by Jon on 9/15/16.
  */
 
-class Header extends React.Component {
+import LogoutContainer from './Containers/LogoutContainer.js.jsx';
+
+export default class Header extends React.Component {
 
     constructor(props) {
         super(props);

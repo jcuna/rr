@@ -2,7 +2,9 @@
  * Created by Jon on 9/22/16.
  */
 
-class LoginContainer extends React.Component {
+import api from '../util/api';
+
+export default class LoginContainer extends React.Component {
     constructor(props) {
         super(props);
     }

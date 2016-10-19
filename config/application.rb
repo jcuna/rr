@@ -15,5 +15,7 @@ module Hello
     config.browserify_rails.commandline_options =
         "-t [ babelify --presets [ es2015 react stage-0 ] --plugins [ syntax-async-functions transform-regenerator ] ]"
 
+    config.browserify_rails.source_map_environments << "development"
+
   end
 end

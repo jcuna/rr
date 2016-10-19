@@ -1,7 +1,7 @@
 /**
  * Created by Jon on 9/15/16.
  */
-class Footer extends React.Component {
+export default class Footer extends React.Component {
     render() {
         return (
             <div id="footer">

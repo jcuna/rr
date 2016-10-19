@@ -2,7 +2,12 @@
  * Created by jgarcia on 10/7/16.
  */
 
-class CurrentUserContainer extends React.Component {
+import Header from '../Header.js.jsx';
+import Login from '../Login.js.jsx';
+import api from '../util/api'
+import clearCookies from '../util/clearCookies';
+
+export default class CurrentUserContainer extends React.Component {
     constructor(props) {
         super(props);
 

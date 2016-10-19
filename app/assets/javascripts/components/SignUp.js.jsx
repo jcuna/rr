@@ -2,7 +2,11 @@
  * Created by Jon on 9/21/16.
  */
 
-class SignUp extends React.Component {
+import FormGenerator from './util/FormGenerator.js.jsx';
+import Notification from './util/Notification.js.jsx';
+import api from './util/api';
+
+export default class SignUp extends React.Component {
 
     constructor(props) {
         super(props);

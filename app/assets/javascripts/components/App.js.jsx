@@ -1,8 +1,8 @@
-
-// const Router = ReactRouter;
-// const Route = ReactRouter.Route;
-// const BrowserHistory = ReactRouter;
-// const IndexRoute = ReactRouter.IndexRoute;
+/**
+ * Created by jgarcia on 10/7/16.
+ */
+import Footer from './Footer.js.jsx';
+import CurrentUserContainer from './Containers/CurrentUserContainer.js.jsx';
 
 export default class App extends React.Component {
 
@@ -11,13 +11,7 @@ export default class App extends React.Component {
             <div className="full-body">
                 <div className="full-body">
                     <div id="content">
-                        {/*<CurrentUserContainer/>*/}
-                        {/*<CurrentUserContainer/>*/}
-                        {/*<Router history={BrowserHistory}>*/}
-                            {/*<Route path="/" component={Content}>*/}
-                                {/*<Route path="login" component={Login}/>*/}
-                            {/*</Route>*/}
-                        {/*</Router>*/}
+                        <CurrentUserContainer/>
                     </div>
                     <Footer/>
                 </div>

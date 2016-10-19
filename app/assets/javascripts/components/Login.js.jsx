@@ -2,7 +2,13 @@
  * Created by Jon on 9/21/16.
  */
 
-class Login extends React.Component {
+import FormGenerator from './util/FormGenerator.js.jsx';
+import Notification from './util/Notification.js.jsx';
+import LoginContainer from './Containers/LoginContainer.js.jsx';
+import Modal from './util/Modal.js.jsx';
+import SignUp from './SignUp.js.jsx';
+
+export default class Login extends React.Component {
 
     constructor(props) {
         super(props);

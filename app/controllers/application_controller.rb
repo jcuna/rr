@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
 
+  # rescue_from StandardError do |exception|
+  #   render json: { :error => exception.message }, :status => 500
+  # end
+
+  protect_from_forgery with: :exception
   before_action :login_with_cookie
 
   def render_json(data, status = 200, redirect = nil)
@@ -68,5 +72,9 @@ class ApplicationController < ActionController::Base
     #clear off old sessions
     Session.where(user_id: @user.id).where('expire < ?', Time.now).destroy_all
 
+  end
+
+  def invalid_token
+    render_json :status => 422, :data => null
   end
 end

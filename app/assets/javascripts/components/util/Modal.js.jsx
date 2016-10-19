@@ -2,7 +2,7 @@
  * Created by Jon on 9/30/16.
  */
 
-class Modal extends React.Component {
+export default class Modal extends React.Component {
     constructor(props) {
         super(props);
 

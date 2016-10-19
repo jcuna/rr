@@ -2,7 +2,7 @@
  * Created by Jon on 9/21/16.
  */
 
-class FormGenerator extends React.Component {
+export default class FormGenerator extends React.Component {
     constructor(props) {
         super(props);
 
