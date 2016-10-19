@@ -3,7 +3,6 @@
  */
 
 import { Route, Link } from 'react-router'
-
 import App from './App.js.jsx'
 
 const Routes = (
