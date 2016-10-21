@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   post '/user/create', to: 'user#create'
   get '/user/get-current', to: 'user#current_user'
 
+  match '*path' => 'application#handler', :via => [:get]
+
 end

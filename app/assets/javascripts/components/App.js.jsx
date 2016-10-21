@@ -17,7 +17,7 @@ export default class App extends React.Component {
                 <div className="full-body">
                     <div id="content">
                         <CurrentUserContainer/>
-                        <Content components={this.props.route.childRoutes}/>
+                        <Content components={this.props.children}/>
                     </div>
                     <Footer/>
                 </div>
