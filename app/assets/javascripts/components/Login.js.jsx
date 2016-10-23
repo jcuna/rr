@@ -9,6 +9,7 @@ import LoginContainer from './Containers/LoginContainer.js.jsx';
 import Modal from './util/Modal.js.jsx';
 import SignUp from './SignUp.js.jsx';
 import userData from './stores/UserData.js.jsx';
+import * as UserActions from './actions/UserActions';
 
 export default class Login extends React.Component {
 
@@ -16,8 +17,6 @@ export default class Login extends React.Component {
         super(props);
 
         this.handleClick = this.handleClick.bind(this);
-        this.onSuccessLogin = this.onSuccessLogin.bind(this);
-        this.onFailureLogin = this.onFailureLogin.bind(this);
         this.accountCreated = this.accountCreated.bind(this);
         this.signUp = this.signUp.bind(this);
 
@@ -90,14 +89,14 @@ export default class Login extends React.Component {
                     username: this.refs.username.value,
                     password: this.refs.password.value,
                     onSuccess: this.onSuccessLogin,
-                    onFailure: this.onFailureLogin
+                    onFailure: this.onFailureLogin.bind(this)
                 }}/>
             });
         }
     };
 
     onSuccessLogin() {
-        this.props.success();
+        UserActions.fetchUser();
     }
 
     accountCreated() {

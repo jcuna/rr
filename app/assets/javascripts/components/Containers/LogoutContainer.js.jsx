@@ -1,16 +1,19 @@
 /**
  * Created by jgarcia on 10/7/16.
  */
-import App from '../App.js.jsx';
+
 import api from '../util/api';
+import {browserHistory} from 'react-router';
 
 export default class LogoutContainer extends React.Component {
 
     componentWillMount() {
-        api('logout', 'delete');
+        api('logout', 'delete').then( function () {
+            browserHistory.push('/');
+        });
     }
 
     render() {
-        return (<App/>);
+        return (<div>logging out...</div>);
     }
 }

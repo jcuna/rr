@@ -4,7 +4,8 @@
 
 import {EventEmitter} from 'events';
 import Dispatcher from '../Dispatcher';
-import api from '../util/api';
+import clearCookies from '../util/clearCookies';
+import {browserHistory} from 'react-router';
 
 class UserData extends EventEmitter {
     constructor() {
@@ -14,9 +15,8 @@ class UserData extends EventEmitter {
             loaded: false
         };
         this.getUser = this.getUser.bind(this);
-        this.fetchUser = this.fetchUser.bind(this);
         this.setUser = this.setUser.bind(this);
-        this.fetchUser();
+        this.updateUser = this.updateUser.bind(this);
     }
 
     getUser() {
@@ -32,22 +32,23 @@ class UserData extends EventEmitter {
     handleActions(action) {
         switch (action.type) {
             case 'UPDATE_USER': {
-                this.updateUser.bind(this, action.user);
+                this.updateUser(action.user);
+                break;
+            }
+            case 'SET_USER': {
+                this.setUser(action.user);
+                break;
+            }
+            case 'NOT_LOGGED_IN': {
+                clearCookies();
+                browserHistory.push('/login');
+                break;
             }
         }
     }
 
     updateUser(user) {
         //TODO: Update user endpoint
-    }
-
-    fetchUser() {
-        api('user/get-current', 'get').then(response => {
-            this.setUser(response.data);
-        }, error => {
-            clearCookies();
-            browserHistory.push('/login');
-        });
     }
 }
 

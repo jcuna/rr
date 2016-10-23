@@ -3,7 +3,8 @@
  */
 
 import userData from './stores/UserData.js.jsx';
-import {Link} from 'react-router'
+import {Link} from 'react-router';
+import * as userActions from './actions/UserActions';
 
 export default class Header extends React.Component {
 
@@ -25,6 +26,7 @@ export default class Header extends React.Component {
     }
 
     componentWillMount() {
+        userActions.fetchUser();
         userData.on("change", () => {
             this.setState({
                 component: this.header(userData.getUser())
