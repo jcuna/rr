@@ -5,7 +5,7 @@
 import {Route, Link, IndexRoute} from 'react-router'
 import App from './App.js.jsx'
 import ErrorPage from './errors/ErrorPage.js.jsx';
-import Home from './home/Home.js.jsx';
+import Home from './pages/Home.js.jsx';
 import Login from './Login.js.jsx';
 import Logout from './Containers/LogoutContainer.js.jsx';
 

@@ -78,11 +78,4 @@ class ApplicationController < ActionController::Base
     render_json :status => 422, :data => null
   end
 
-
-  # we will return the index template on any direct request to the backend.
-  # we only serve one template and the rest is done in the front end.
-  def handler
-    render 'home/index'
-  end
-
 end
