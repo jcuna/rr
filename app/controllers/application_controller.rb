@@ -55,7 +55,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # store session data
+  # stores session data
   def store_session
     if defined? (@user_session)
       @user_session.cookie = @token

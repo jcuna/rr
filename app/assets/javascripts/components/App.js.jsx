@@ -3,7 +3,7 @@
  */
 
 import Footer from './Footer.js.jsx';
-import CurrentUserContainer from './Containers/CurrentUserContainer.js.jsx';
+import Header from './Header.js.jsx';
 import Content from './Content.js.jsx';
 
 export default class App extends React.Component {
@@ -16,7 +16,7 @@ export default class App extends React.Component {
             <div className="full-body">
                 <div className="full-body">
                     <div id="content">
-                        <CurrentUserContainer/>
+                        <Header/>
                         <Content components={this.props.children}/>
                     </div>
                     <Footer/>

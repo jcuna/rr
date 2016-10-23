@@ -2,33 +2,41 @@
  * Created by Jon on 9/15/16.
  */
 
-import LogoutContainer from './Containers/LogoutContainer.js.jsx';
+import userData from './stores/UserData.js.jsx';
+import {Link} from 'react-router'
 
 export default class Header extends React.Component {
 
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
 
         this.header = this.header.bind(this);
-        this.logout = this.logout.bind(this);
+
+        let user = userData.getUser();
+        let component = <div></div>;
+
+        if (user.loaded) {
+            component = this.header(user);
+        }
 
         this.state = {
-            component: this.header()
+            component: component
         }
     }
 
-    logout() {
-        this.setState({
-            component: <LogoutContainer/>
+    componentWillMount() {
+        userData.on("change", () => {
+            this.setState({
+                component: this.header(userData.getUser())
+            });
         });
     }
 
     render() {
-        return (this.state.component);
+        return this.state.component
     }
 
-    header() {
-        let user = this.props.user;
+    header(user) {
         return (
             <nav className="navbar navbar-default">
                 <div className="container-fluid">
@@ -39,7 +47,7 @@ export default class Header extends React.Component {
                             <span className="icon-bar"></span>
                             <span className="icon-bar"></span>
                         </button>
-                        <a className="navbar-brand" href="#">React</a>
+                        <Link to="/" className="navbar-brand">React</Link>
                     </div>
                     <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul className="nav navbar-nav">
@@ -67,7 +75,7 @@ export default class Header extends React.Component {
                                     <li><a href="">Another action</a></li>
                                     <li><a href="">Something else here</a></li>
                                     <li role="separator" className="divider"></li>
-                                    <li><a onClick={this.logout}>logout</a></li>
+                                    <li><Link to="/logout">Logout</Link></li>
                                 </ul>
                             </li>
                         </ul>

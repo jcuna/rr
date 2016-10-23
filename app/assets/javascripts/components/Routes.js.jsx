@@ -7,13 +7,15 @@ import App from './App.js.jsx'
 import ErrorPage from './errors/ErrorPage.js.jsx';
 import Home from './home/Home.js.jsx';
 import Login from './Login.js.jsx';
+import Logout from './Containers/LogoutContainer.js.jsx';
 
 const Routes = (
     <Route path="/" component={App}>
         <IndexRoute component={Home}/>
         <Route path="/login" component={Login}/>
+        <Route path="/logout" component={Logout}/>
 
-        <Route path="*" component={ErrorPage} code={404}></Route>
+        <Route path="*" component={ErrorPage} code={404}/>
     </Route>
 );
 
