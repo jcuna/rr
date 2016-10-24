@@ -1,7 +1,8 @@
 /**
  * Created by jgarcia on 10/7/16.
  */
-window.fetchJsonp = require('fetch-jsonp');
+let fetchJsonp = require('fetch-jsonp');
+let urlEncode = require('query-string');
 /**
  *
  * @param url
@@ -21,7 +22,7 @@ const api = function(url, method, data, jsonp) {
     }
 
     if (jsonp !== undefined && jsonp) {
-        return jsonpFetch(url, method, data, crossDomain);
+        return jsonpFetch(url, data);
     } else {
        return normalFetch(url, method, data, crossDomain);
     }
@@ -80,8 +81,18 @@ const normalFetch = function(url, method, data, crossDomain) {
     });
 };
 
-const jsonpFetch = function (url, method, data, crossDomain) {
-
+/**
+ *
+ * @param url
+ * @param data
+ * @returns {*}
+ */
+const jsonpFetch = function (url, data) {
+    let queryString = urlEncode.stringify(data);
+    url = url+'?'+queryString;
+    return fetchJsonp(url).then( response => {
+        return response.json()
+    });
 };
 
 module.exports = api;
