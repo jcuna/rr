@@ -21,9 +21,9 @@ const api = function(url, method, data, jsonp) {
     }
 
     if (jsonp !== undefined && jsonp) {
-        return jsonp(url, method, data);
+        return jsonpFetch(url, method, data, crossDomain);
     } else {
-       return normalFetch(url, method, data);
+       return normalFetch(url, method, data, crossDomain);
     }
 };
 
@@ -32,9 +32,10 @@ const api = function(url, method, data, jsonp) {
  * @param url
  * @param method
  * @param data
+ * @param crossDomain
  * @returns {Promise}
  */
-const normalFetch = function(url, method, data) {
+const normalFetch = function(url, method, data, crossDomain) {
     'use strict';
 
     const metas = document.getElementsByTagName('meta');
@@ -79,7 +80,7 @@ const normalFetch = function(url, method, data) {
     });
 };
 
-const jsonp = function (url, method, data) {
+const jsonpFetch = function (url, method, data, crossDomain) {
 
 };
 
