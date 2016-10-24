@@ -1,7 +1,7 @@
 /**
  * Created by jgarcia on 10/7/16.
  */
-
+window.fetchJsonp = require('fetch-jsonp');
 /**
  *
  * @param url
@@ -20,40 +20,24 @@ const api = function(url, method, data, jsonp) {
         url = '/'+url;
     }
 
-    let request = {
-        url: url,
-        method: method,
-        data: data,
-        dataType: 'json'
-    };
-
-    if (jsonp !== undefined) {
-        request.dataType = 'jsonp';
-        request.jsonp = jsonp;
+    if (jsonp !== undefined && jsonp) {
+        return jsonp(url, method, data);
+    } else {
+       return normalFetch(url, method, data);
     }
-
-    return new Promise(function(resolve, reject) {
-        return $.ajax(request).then(function(response) {
-            if (crossDomain) {
-                resolve(response);
-            } else if (response.redirect !== undefined) {
-                window.location = response.redirect;
-            } else if(response.status === 200) {
-                resolve(response);
-            } else {
-                reject(response);
-            }
-        }, function (error) {
-            reject(error);
-        });
-    });
-
 };
 
-module.exports = api;
+/**
+ *
+ * @param url
+ * @param method
+ * @param data
+ * @returns {Promise}
+ */
+const normalFetch = function(url, method, data) {
+    'use strict';
 
-const api2 = function(url, method, data, jsonp) {
-    let metas = document.getElementsByTagName('meta');
+    const metas = document.getElementsByTagName('meta');
     let token;
     for (let i = 0; i < metas.length; i++) {
         if (metas[i].getAttribute('name') === 'csrf-token') {
@@ -61,18 +45,42 @@ const api2 = function(url, method, data, jsonp) {
         }
     }
 
-    let myHeaders = new Headers({
+    const requestHeaders = new Headers({
         "Content-Type": "application/json",
-        "credentials": "same-origin",
         "X-CSRF-Token": token
     });
 
-    let request = {
-        headers: myHeaders,
+    const request = {
+        headers: requestHeaders,
+        credentials: "same-origin",
         method: method,
-        body: data,
+        body: JSON.stringify(data),
     };
 
-
-    fetch(url, request)
+    return new Promise(function(resolve, reject) {
+        return fetch(url, request).then(response => {
+            const contentType = response.headers.get("content-type");
+            if(contentType && contentType.indexOf("application/json") !== -1) {
+                return response.json().then(data => {
+                    if (data.redirect !== undefined) {
+                        window.location = data.redirect;
+                    } else if(data.status === 200 || crossDomain) {
+                        resolve(data);
+                    } else {
+                        reject(data);
+                    }
+                }, (error) => {
+                    reject(error);
+                });
+            }
+        }, (error) => {
+            reject(error);
+        });
+    });
 };
+
+const jsonp = function (url, method, data) {
+
+};
+
+module.exports = api;

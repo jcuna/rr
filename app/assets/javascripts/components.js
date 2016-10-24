@@ -1,4 +1,5 @@
-require( 'babel-polyfill' );
+require('babel-polyfill');
+require('es6-promise').polyfill();
 
 import Routes from 'components/Routes.js.jsx'
 import { Router, browserHistory } from 'react-router'
