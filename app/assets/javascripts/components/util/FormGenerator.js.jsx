@@ -48,7 +48,7 @@ export default class FormGenerator extends React.Component {
         return React.createElement('form', {className: formName, onSubmit: this.state.callback},
             elements.map((b, k) => {
                 let formElement = b.formElement == undefined ? 'input' : b.formElement;
-                let reference = b.placeholder.replace(/[^\w]/g, '_').toLowerCase();
+                let reference = this.getReference(b);
 
                 return React.createElement('div', {className: 'form-group', key: k},
                     React.createElement(formElement, {
@@ -72,5 +72,16 @@ export default class FormGenerator extends React.Component {
                 )
             )
         )
+    }
+
+    getReference(key) {
+        let reference = null;
+        if (key.placeholder !== undefined) {
+            reference = key.placeholder.replace(/[^\w]/g, '_').toLowerCase();
+        } else if (key.name !== undefined) {
+            reference = key.name.replace(/[^\w]/g, '_').toLowerCase();
+        }
+
+        return reference;
     }
 }

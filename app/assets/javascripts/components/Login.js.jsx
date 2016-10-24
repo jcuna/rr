@@ -39,7 +39,7 @@ export default class Login extends React.Component {
     getForm() {
         return (
          <div>
-            <FormGenerator props = {this.getFormProps()}/>
+            <FormGenerator props={this.getFormProps()}/>
         </div>
         )
     }
