@@ -5,6 +5,7 @@
 import userData from './stores/UserData.js.jsx';
 import {Link} from 'react-router';
 import * as userActions from './actions/UserActions';
+import * as dropdown from './util/dropdown';
 
 export default class Header extends React.Component {
 
@@ -27,10 +28,12 @@ export default class Header extends React.Component {
 
     componentWillMount() {
         userActions.fetchUser();
-        userData.on("change", () => {
+        userData.on("fetched", () => {
             this.setState({
                 component: this.header(userData.getUser())
             });
+
+            dropdown.bindDropDowns();
         });
     }
 
@@ -53,7 +56,7 @@ export default class Header extends React.Component {
                     </div>
                     <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul className="nav navbar-nav">
-                            <li className="active"><a href="">Link <span className="sr-only">(current)</span></a></li>
+                            <li><a href="">Link</a></li>
                             <li><a href="">Link</a></li>
                             <li className="dropdown">
                                 <a href="" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span className="caret"></span></a>

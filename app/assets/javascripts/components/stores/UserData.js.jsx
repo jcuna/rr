@@ -26,7 +26,7 @@ class UserData extends EventEmitter {
     setUser(user) {
         this.user = user;
         this.user.loaded = true;
-        this.emit('change');
+        this.emit('fetched');
     }
 
     handleActions(action) {
