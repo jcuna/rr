@@ -3,7 +3,6 @@
  */
 'use strict';
 
-var boundEvents = [];
 const resetOpen = function() {
     let parentToggles = document.getElementsByClassName("dropdown");
 
@@ -35,7 +34,6 @@ export function bindDropDowns() {
     let dropdowns = document.getElementsByClassName("dropdown-toggle");
 
     for (let i = 0; i < dropdowns.length; i++) {
-        boundEvents.push(dropdowns[i]);
         dropdowns[i].addEventListener('click', expand);
     }
 }
