@@ -46,14 +46,11 @@ const normalFetch = function(url, method, data, crossDomain) {
             token = metas[i].getAttribute('content');
         }
     }
-
-    const requestHeaders = new Headers({
-        "Content-Type": "application/json",
-        "X-CSRF-Token": token
-    });
-
     const request = {
-        headers: requestHeaders,
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-Token": token
+        },
         credentials: "same-origin",
         method: method,
         body: JSON.stringify(data),
