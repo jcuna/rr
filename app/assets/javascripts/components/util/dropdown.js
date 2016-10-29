@@ -24,10 +24,13 @@ const collapse = function(e) {
 
 const expand = function(e) {
     e.preventDefault();
-    resetOpen();
-    e.target.parentNode.className += ' open';
-
-    document.addEventListener('click', collapse);
+    if (e.target.parentNode.className.indexOf(" open") !== -1) {
+        resetOpen();
+    } else {
+        resetOpen();
+        e.target.parentNode.className += ' open';
+        document.addEventListener('click', collapse);
+    }
 };
 
 export function bindDropDowns() {

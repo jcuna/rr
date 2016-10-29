@@ -28,7 +28,7 @@ export default class Login extends React.Component {
 
     componentWillMount() {
         if (!userData.getUser().loaded) {
-            userData.on("change", () => {
+            userData.on("fetched", () => {
                 browserHistory.push('/');
             });
         } else {
