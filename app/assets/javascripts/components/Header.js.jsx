@@ -5,7 +5,7 @@
 import userData from './stores/UserData.js.jsx';
 import {Link} from 'react-router';
 import * as userActions from './actions/UserActions';
-import * as dropdown from './util/dropdown';
+import Dropdown from './util/Dropdown';
 
 export default class Header extends React.Component {
 
@@ -32,8 +32,7 @@ export default class Header extends React.Component {
             this.setState({
                 component: this.header(userData.getUser())
             });
-
-            dropdown.bindDropDowns();
+            Dropdown.bindDropDown();
         });
     }
 

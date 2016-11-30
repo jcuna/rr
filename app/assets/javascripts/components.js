@@ -11,3 +11,12 @@ document.addEventListener("DOMContentLoaded", function() {
         document.querySelector('#app')
     );
 });
+
+/**
+ * TODO: move to own file
+ */
+if (!String.prototype.trim) {
+    String.prototype.trim = function () {
+        return this.replace(/^\s+|\s+$/g,'');
+    };
+}
