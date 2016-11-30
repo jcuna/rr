@@ -1,6 +1,7 @@
 require('babel-polyfill');
 require('es6-promise').polyfill();
 
+import 'whatwg-fetch'
 import Routes from 'components/Routes.js.jsx'
 import { Router, browserHistory } from 'react-router'
 
