@@ -15,7 +15,6 @@ export default class Dropdown {
     };
 
     static collapse(e) {
-        e.stopPropagation();
         if (e.target.className.indexOf("dropdown") === -1) {
             Dropdown.resetOpen();
             document.removeEventListener('click', Dropdown.collapse);
@@ -24,10 +23,12 @@ export default class Dropdown {
 
     static expand(e) {
         e.preventDefault();
-        Dropdown.resetOpen();
         if (e.target.parentNode.className.indexOf("open") === -1) {
+            Dropdown.resetOpen();
             e.target.parentNode.className += ' open';
             document.addEventListener('click', Dropdown.collapse);
+        } else {
+            Dropdown.resetOpen();
         }
     };
 
@@ -43,7 +44,6 @@ export default class Dropdown {
     };
 
     static setupNavToggle(e) {
-        e.stopPropagation();
         e.preventDefault();
         Dropdown.updateParentNav(e);
         Dropdown.toggleNav();
